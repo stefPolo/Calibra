@@ -1,4 +1,4 @@
-#include "LinearModel.hpp"
+#include "Calibra/LinearModel.hpp"
 #include <vector>
 #include <numeric>
 #include <stdexcept>
