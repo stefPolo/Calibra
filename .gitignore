@@ -1,0 +1,16 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# C++
+build/
+cmake-build-*/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
