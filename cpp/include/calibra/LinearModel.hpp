@@ -1,0 +1,22 @@
+#include "IModel.hpp"
+
+class LinearModel : public IModel {
+
+    private:
+        std::size_t input_dimension_ {};
+
+    public:
+        explicit LinearModel(std::size_t input_dimension)
+            : input_dimension_ {input_dimension}
+        {           
+        }    
+               
+        
+        double evaluate(
+            const std::vector<double>& x,
+            const std::vector<double>& parameters
+        ) const override;
+
+        std::size_t input_dimension() const override;
+        std::size_t parameter_dimension() const override;
+};
