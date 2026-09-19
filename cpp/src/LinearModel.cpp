@@ -1,4 +1,4 @@
-#include "Calibra/LinearModel.hpp"
+#include "calibra/LinearModel.hpp"
 #include <vector>
 #include <numeric>
 #include <stdexcept>
@@ -13,7 +13,12 @@ std::size_t LinearModel::parameter_dimension() const
     return input_dimension_ + 1;
 }
 
-double LinearModel::evaluate(
+std::size_t LinearModel::output_dimension() const
+{
+    return 1;
+}
+
+std::vector<double> LinearModel::evaluate(
     const std::vector<double>& X, 
     const std::vector<double>& params
 ) const
@@ -32,10 +37,12 @@ double LinearModel::evaluate(
         );
     }
 
-    return params[0] 
+    return {
+        params[0] 
         + std::inner_product(
             X.begin(), 
             X.end(), 
             params.begin() + 1, 
-            0.0);
+            0.0)
+        };
 }                                  

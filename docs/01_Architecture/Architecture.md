@@ -13,7 +13,7 @@ An arbitrary calibration problem, $\mathcal{P}$ is generally represented as the 
 where:
 
 * \(f\): is the Model to be calibrated,
-* \(J\): die loss function to be minimised or maximised accordigly,
+* \(J\): the loss function to be minimised or maximised accordigly,
 * \(X_{\mathrm{cal}}\): Data used for calibrating the model,
 * \(y_{\mathrm{cal}}\): observed data, i.e "labels",
 * \(\theta_0\in\mathbb R^p\): initial vector of parameters of interest,

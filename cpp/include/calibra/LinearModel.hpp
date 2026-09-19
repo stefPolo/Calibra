@@ -10,13 +10,13 @@ class LinearModel : public IModel {
             : input_dimension_ {input_dimension}
         {           
         }    
-               
         
-        double evaluate(
+        std::vector<double> evaluate(
             const std::vector<double>& x,
             const std::vector<double>& parameters
         ) const override;
 
         std::size_t input_dimension() const override;
         std::size_t parameter_dimension() const override;
+        std::size_t output_dimension() const override;
 };

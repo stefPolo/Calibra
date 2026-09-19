@@ -2,9 +2,9 @@
 #include <vector>
 
 class IModel {
-    public:
 
-        virtual double evaluate(
+    public:
+        virtual std::vector<double> evaluate(
 
             const std::vector<double>& x,
             const std::vector<double>& parameters
@@ -13,6 +13,7 @@ class IModel {
 
         virtual std::size_t input_dimension() const = 0;
         virtual std::size_t parameter_dimension() const = 0;
+        virtual std::size_t output_dimension() const = 0;
 
         virtual ~IModel() = default;
 };

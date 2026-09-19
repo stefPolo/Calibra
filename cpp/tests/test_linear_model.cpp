@@ -9,6 +9,16 @@ int main()
 
     LinearModel model{2};
 
-    std::cout << model.evaluate(X, params) << std::endl;
+    std::vector<double> res = model.evaluate(X, params);
+    int size = res.size();
+
+    if(size == 1)
+    {
+        if(res[0] == model.evaluate(X, params)[0]) 
+        {
+            std::cout << res[0] << std::endl;
+        }
+    }
+
     return 0;
 }
