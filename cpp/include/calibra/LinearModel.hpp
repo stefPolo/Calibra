@@ -1,4 +1,4 @@
-#include "IModel.hpp"
+#include "calibra/IModel.hpp"
 
 class LinearModel : public IModel {
 

@@ -11,6 +11,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_library(
     calibra
     cpp/src/LinearModel.cpp
+    cpp/src/ParameterSpace.cpp
 )
 
 target_compile_features(
@@ -36,9 +37,25 @@ target_link_libraries(
         calibra
 )
 
+add_executable(
+    test_parameter_space
+    cpp/tests/test_parameter_space.cpp
+)
+
+target_link_libraries(
+    test_parameter_space
+    PRIVATE
+        calibra
+)
+
 enable_testing()
 
 add_test(
     NAME linear_model
     COMMAND test_linear_model
+)
+
+add_test(
+    NAME parameter_space
+    COMMAND test_parameter_space
 )
