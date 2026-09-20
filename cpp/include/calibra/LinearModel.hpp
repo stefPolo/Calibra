@@ -2,9 +2,6 @@
 
 class LinearModel : public IModel {
 
-    private:
-        std::size_t input_dimension_ {};
-
     public:
         explicit LinearModel(std::size_t input_dimension)
             : input_dimension_ {input_dimension}
@@ -19,4 +16,7 @@ class LinearModel : public IModel {
         std::size_t input_dimension() const override;
         std::size_t parameter_dimension() const override;
         std::size_t output_dimension() const override;
+
+        private:
+            std::size_t input_dimension_ {};
 };

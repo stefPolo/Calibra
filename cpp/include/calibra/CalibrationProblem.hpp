@@ -1,21 +1,27 @@
 #include "IModel.hpp"
+#include "ParameterSpace.hpp"
 #include <vector>
 
 class CalibrationProblem {
 
     public:
-        virtual double IModel();
-        virtual double describeProblem() const = 0;
-
-        virtual ~CalibrationProblem() = default;
+        CalibrationProblem(
+            IModel& model,
+            ParameterSpace& paramSpace,
+            std::vector<double> initParameters
+        );
     
     private:
-        std::vector<double> initParameters;
-        std::vector<std::vector<double>> admissableParameterSpace;
+        IModel& model_;
+        ParameterSpace& paramSpace_;
+        std::vector<double> initParameters_;
 
-        std::vector<std::vector<double>> calibrationData;
-        std::vector<double> observedData;
+        std::vector<std::vector<double>> calibrationData_;
+        std::vector<std::vector<double>> observedData_;
         
-        bool calibrationDirection;
-        std::vector<std::vector<double>> constraints;   
+        enum optimisionDirection_ {
+            Minimize_,
+            Maximize
+        };    
+
 };

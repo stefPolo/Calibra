@@ -12,6 +12,7 @@ add_library(
     calibra
     cpp/src/LinearModel.cpp
     cpp/src/ParameterSpace.cpp
+    cpp/src/MeanSquaredError.cpp
 )
 
 target_compile_features(
@@ -25,6 +26,10 @@ target_include_directories(
     PUBLIC
         ${PROJECT_SOURCE_DIR}/cpp/include
 )
+
+# ---------------------------------------------------------------------------
+# Tests
+# ---------------------------------------------------------------------------
 
 add_executable(
     test_linear_model
@@ -48,6 +53,21 @@ target_link_libraries(
         calibra
 )
 
+add_executable(
+    test_mse
+    cpp/tests/test_mse.cpp
+)
+
+target_link_libraries(
+    test_mse
+    PRIVATE
+        calibra
+)
+
+# ---------------------------------------------------------------------------
+# CTest
+# ---------------------------------------------------------------------------
+
 enable_testing()
 
 add_test(
@@ -58,4 +78,9 @@ add_test(
 add_test(
     NAME parameter_space
     COMMAND test_parameter_space
+)
+
+add_test(
+    NAME mse
+    COMMAND test_mse
 )
