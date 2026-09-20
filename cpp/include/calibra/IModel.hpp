@@ -4,7 +4,7 @@
 class IModel {
 
     public:
-        virtual std::vector<double> evaluate(
+        virtual double evaluate(
 
             const std::vector<double>& x,
             const std::vector<double>& parameters
