@@ -9,7 +9,7 @@ class LinearModel : public IModel {
         }    
         
         std::vector<double> evaluate(
-            const std::vector<double>& x,
+            const std::vector<std::vector<double>>& x,
             const std::vector<double>& parameters
         ) const override;
 

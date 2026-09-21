@@ -90,14 +90,8 @@ class CalibrationProblem
                     "Initialised parameter space does not contain passed parameters."
                 );
             }
-
-            std::size_t n = labels_.size();
-            std::vector<double> predictions(n);
             
-            for( std::size_t i = 0; i < n; ++i )
-            {
-                predictions[i] = model_.evaluate(calibrationData_[i], params);
-            }
+            auto predictions = model_.evaluate(calibrationData_, params);
 
             double loss = objectiveFunction_.evaluate(predictions, labels_);
 
