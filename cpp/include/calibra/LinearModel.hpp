@@ -1,3 +1,4 @@
+#pragma once
 #include "calibra/IModel.hpp"
 
 class LinearModel : public IModel {

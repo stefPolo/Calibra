@@ -1,3 +1,4 @@
+#pragma once
 #include "IModel.hpp"
 #include "ParameterSpace.hpp"
 #include "IObjectiveFunction.hpp"
@@ -18,8 +19,8 @@ class CalibrationProblem
             ParameterSpace& paramSpace,
             std::vector<double>& initParameters,
             IObjectiveFunction& objectiveFunction,
-            const std::vector<double>& labels,
             const std::vector<std::vector<double>>& calibrationData,
+            const std::vector<double>& labels,
             OptimisationDirection direction = OptimisationDirection::minimise
         ) 
             : model_(model)

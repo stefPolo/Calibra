@@ -32,34 +32,12 @@ target_include_directories(
 # ---------------------------------------------------------------------------
 
 add_executable(
-    test_linear_model
-    cpp/tests/test_linear_model.cpp
+    test_calibration_problem
+    cpp/tests/test_calibration_problem.cpp
 )
 
 target_link_libraries(
-    test_linear_model
-    PRIVATE
-        calibra
-)
-
-add_executable(
-    test_parameter_space
-    cpp/tests/test_parameter_space.cpp
-)
-
-target_link_libraries(
-    test_parameter_space
-    PRIVATE
-        calibra
-)
-
-add_executable(
-    test_mse
-    cpp/tests/test_mse.cpp
-)
-
-target_link_libraries(
-    test_mse
+    test_calibration_problem
     PRIVATE
         calibra
 )
@@ -68,19 +46,7 @@ target_link_libraries(
 # CTest
 # ---------------------------------------------------------------------------
 
-enable_testing()
-
 add_test(
-    NAME linear_model
-    COMMAND test_linear_model
-)
-
-add_test(
-    NAME parameter_space
-    COMMAND test_parameter_space
-)
-
-add_test(
-    NAME mse
-    COMMAND test_mse
+    NAME calibration_problem
+    COMMAND test_calibration_problem
 )
