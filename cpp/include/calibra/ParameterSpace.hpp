@@ -11,14 +11,8 @@ class ParameterSpace
             std::vector<double>& upper_bounds
         );
         
-        /*
-        Just tracks the dimension of the parameter space.
-        */
         std::size_t dimension() const;
 
-        /*
-        Method which checks whether the chosen parameter vector is a subset of the parameter space.
-        */
         bool contains(
             const std::vector<double>& parameters
         ) const;
