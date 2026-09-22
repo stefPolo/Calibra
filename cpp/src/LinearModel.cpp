@@ -49,11 +49,11 @@ std::vector<double> LinearModel::evaluate(
     std::size_t n = X.size();
     std::vector<double> predictions(n);
 
-    for ( std::size_t i = 0; i < n; ++i )
+    for (std::size_t i = 0; i < n; ++i)
     {
         double prediction = params[0];
 
-        for ( std::size_t j = 0; j < input_dimension_; ++j )
+        for (std::size_t j = 0; j < input_dimension_; ++j)
         {
             prediction += X[i][j] * params[j+1];           
         }

@@ -11,7 +11,7 @@ ParameterSpace::ParameterSpace(
       upper_bounds_{upper_bounds}
 {
     // Vectors of lower and upper bounds have to match to form valid intervals for each dimension.
-    if( lower_bounds.size() != upper_bounds.size() )
+    if (lower_bounds.size() != upper_bounds.size())
     {
         throw std::invalid_argument(
             "Dimensions of chosen lower and upper bounds must match."
@@ -19,7 +19,7 @@ ParameterSpace::ParameterSpace(
     }
 
     // At least one dimension.
-    if( lower_bounds.empty() ) 
+    if (lower_bounds.empty()) 
     {
         throw std::invalid_argument(
             "Admissible parameter space cannot be of dimension zero."
@@ -27,7 +27,7 @@ ParameterSpace::ParameterSpace(
     }           
 
     // Assure that the bounds are real numbers
-    for( std::size_t i = 0; i < lower_bounds.size(); i++ )
+    for (std::size_t i = 0; i < lower_bounds.size(); ++i)
     {
         if( (!std::isfinite(lower_bounds[i])) || (!std::isfinite(upper_bounds[i])) )
         {
@@ -37,7 +37,7 @@ ParameterSpace::ParameterSpace(
         }
 
         // Intervals must have non-negative length.
-        if( lower_bounds[i] > upper_bounds[i] )
+        if (lower_bounds[i] > upper_bounds[i])
         {
             throw std::invalid_argument(
                 "Lower bounds cannot be strictly greater than upper bounds."
@@ -66,13 +66,13 @@ bool ParameterSpace::contains(
 ) const
 {
     // Check if parameter vector and instantiated parameter space domensions match.
-    if( params.size() != dimension() )
+    if (params.size() != dimension())
     {
         return false;
     }
 
     // Each parameter has to be a member of the parameter space and hence be finite.
-    for( std::size_t i = 0; i < params.size(); ++i )
+    for (std::size_t i = 0; i < params.size(); ++i)
     {
         if (
             (params[i] < lower_bounds_[i]) ||

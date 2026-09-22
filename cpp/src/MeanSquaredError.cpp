@@ -28,9 +28,9 @@ double MeanSquaredError::evaluate(
     }
 
     // Predictions and labels must be real numbers. If they are, comoute the squared errors.
-    for( std::size_t i = 0; i < n; ++i )
+    for (std::size_t i = 0; i < n; ++i)
     {
-        if( !std::isfinite(predictions[i]) || !std::isfinite(labels[i]) )
+        if (!std::isfinite(predictions[i]) || !std::isfinite(labels[i]))
         {
             throw std::invalid_argument(
                 "Predictions and labels must be real numbers."
@@ -41,5 +41,5 @@ double MeanSquaredError::evaluate(
     }
 
     // Return the MSE
-    return 1 / static_cast<double>(n) * se;
+    return se / static_cast<double>(n);
 };

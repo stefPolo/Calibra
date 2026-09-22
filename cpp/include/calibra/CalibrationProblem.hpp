@@ -40,7 +40,7 @@ class CalibrationProblem
             */
             
             // 1.
-            if( !paramSpace.contains(initParameters) )
+            if (!paramSpace.contains(initParameters))
             {
                 throw std::invalid_argument(
                     "Dimensions of initialised parameters\n" 
@@ -51,7 +51,7 @@ class CalibrationProblem
             }
 
             // 2.
-            if( model.parameter_dimension() != initParameters.size() )
+            if (model.parameter_dimension() != initParameters.size())
             {
                 throw std::invalid_argument(
                     "Initialised parameter vector dimensions\n"
@@ -60,9 +60,9 @@ class CalibrationProblem
             }
 
             // 3.
-            for( const std::vector<double>& x : calibrationData )
+            for (const std::vector<double>& x : calibrationData)
             {
-                if( x.size() != model.input_dimension() )
+                if (x.size() != model.input_dimension())
                 {
                     throw std::invalid_argument(
                         "Model input dimension must match number of inputs/features."
@@ -71,7 +71,7 @@ class CalibrationProblem
             }
 
             // 4.
-            if( calibrationData.size() != labels.size() )
+            if (calibrationData.size() != labels.size())
             {
                 throw std::invalid_argument(
                     "The number of observations must match the number of labels."
@@ -85,7 +85,7 @@ class CalibrationProblem
             Check if passed parameters are a member of the initialised parameter space.
             If so, proceed to evaluating the objective function.
             */
-            if( !paramSpace_.contains(params) )
+            if (!paramSpace_.contains(params))
             {
                 throw std::invalid_argument(
                     "Initialised parameter space does not contain passed parameters."
