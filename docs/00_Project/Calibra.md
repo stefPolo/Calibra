@@ -107,7 +107,7 @@ Using `ParameterSpace::lower_bounds()` and `ParameterSpace::upper_bounds()`, we 
 For a one-dimensional parameter vector, the resulting parameter space is simply a closed interval. In two dimensions, it forms a rectangle; in higher dimensions, the corresponding Cartesian product of intervals. Calibra therefore defines the admissible parameter space $\Theta$ as
 
 $$
-\Theta = \prod_{j=1}^m [l_j, u_j] \times \cdots \times [l_m, u_m].
+\Theta = \prod_{j=1}^m [l_j, u_j].
 $$
 
 Accordingly, every admissible parameter vector must satisfy
