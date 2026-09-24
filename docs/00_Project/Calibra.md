@@ -223,7 +223,7 @@ double evaluate_objective(const std::vector<double>& params) const
 Here, the underlying model generates the predictions, which are then passed to the objective function computing the loss, that is, the aggregated deviations of predictions relative to the labels. Depending on our `OptimisationDirection` with $\mathrm{dir} \in \{\mathrm{min}, \mathrm{max}\}, the calibration problem implemented in Calibra can be summarised as follows:
 
 $$
-\underset{\theta \in \Theta}{\operatorname{arg\,min}}
+\underset{\theta \in \Theta}{\mathrm{arg\,min}}
 \;\mathcal{L}\!\left(f(\mathbf{X},\theta),\mathbf{y}\right).
 $$
 
@@ -236,7 +236,7 @@ According to the preceding statement, Calibra’s responsibilities do not end wi
 This investigation also concerns the optimisation algorithm itself. You see, as long as our objective function of choice is not convex, we might only find some strictly _local_ minimum/maximum [4]. This means that there exists some region around our presumably "optimal" parameter vector $\theta^{\star}$, say $\theta^{\dagger} \in \Theta$, such that for arbitrary entries $x_{ij}$ in that region we have
 
 $$
-\mathcal{L}(f(\cdot), \theta^{\dagger}) < \mathcal{L}(f(\cdot), \theta^{\dagger}).
+\mathcal{L}(f(\cdot), \theta^{\dagger}) < \mathcal{L}(f(\cdot), \theta^{\star}).
 $$
 
 So, even if the algorithm converges successfully, maybe even to a definite global optimum, this does provide any implications about the model adequacy and performance on itself. This is because there might exist a wide range of parameter vectors, which make our established model yield the same results with respect to the observed system concerned. Therefore, along the optimisation, this introduces an additional aspect concerning the issue of parameter identifiabilty [5]. In plain terms, if we have the choice between two sets of parameters, again $\theta^{\star}$ and $\theta^{\dagger}$, such that
