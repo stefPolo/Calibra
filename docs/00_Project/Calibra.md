@@ -223,7 +223,8 @@ double evaluate_objective(const std::vector<double>& params) const
 Here, the underlying model generates the predictions, which are then passed to the objective function computing the loss, that is, the aggregated deviations of predictions relative to the labels. Depending on our `OptimisationDirection` with $\mathrm{dir} \in \{\mathrm{min}, \mathrm{max}\}, the calibration problem implemented in Calibra can be summarised as follows:
 
 $$
-\overset{\mathrm{arg}\ \mathrm{dir}}{\theta_0} \mathcal{L}(f(\mathbf{X},\theta_0), \theta_0).
+\underset{\theta \in \Theta}{\operatorname{arg\,min}}
+\;\mathcal{L}\!\left(f(\mathbf{X},\theta),\mathbf{y}\right).
 $$
 
 This problem is tackled by various, well-documented optimisers already existing and is therefore, again, not the main contribution of Calibra. We treat Calibra essentially as an inference problem regarding both the calibrated parameter vector and overall suitability of the model.
@@ -231,6 +232,52 @@ This problem is tackled by various, well-documented optimisers already existing 
 #### Calibration Results
 
 According to the preceding statement, Calibra’s responsibilities do not end with an (optimally) calibrated parameter vector, say $\theta^{\star}$. The actual approach -- and indeed its extension relative to the capabilities of existing libraries and tools -- begins with the thorough investigation of $\theta^{\star}$ to determine whether the model in question is adequately specified and consequently delivers reliable results.
+
+This investigation also concerns the optimisation algorithm itself. You see, as long as our objective function of choice is not convex, we might only find some strictly _local_ minimum/maximum [4]. This means that there exists some region around our presumably "optimal" parameter vector $\theta^{\star}$, say $\theta^{\dagger} \in \Theta$, such that for arbitrary entries $x_{ij}$ in that region we have
+
+$$
+\mathcal{L}(f(\cdot), \theta^{\dagger}) < \mathcal{L}(f(\cdot), \theta^{\dagger}).
+$$
+
+So, even if the algorithm converges successfully, maybe even to a definite global optimum, this does provide any implications about the model adequacy and performance on itself. This is because there might exist a wide range of parameter vectors, which make our established model yield the same results with respect to the observed system concerned. Therefore, along the optimisation, this introduces an additional aspect concerning the issue of parameter identifiabilty [5]. In plain terms, if we have the choice between two sets of parameters, again $\theta^{\star}$ and $\theta^{\dagger}$, such that
+
+$$
+f(x_{ij}, \theta^{\star}) \approx f(x_{ij}, \theta^{\dagger}),
+$$
+
+for all $x_{ij}$, which parameter vector do we declare representative with respect to the system we are dealing with and why? So, the operational success of an optimisation algorithm does not guarantee a _unique_ parameter vector and certainly does not imply respective optimisation _quality_ associated with certain model performance. As a result, the processes of calibrating and validating a specific model are fundamentaly different [6].
+
+### Assessing Calibration Quality
+
+Meanwhile, the specific utility of Calibra is also becoming clear; it will be used in particular as part of the model validation methodology, based on some specific calibration results obtained. It remains to answer which insights are needed, and arguably necessary, to judge on the overall adequacy and reliability of model results, given the components introduced in the preceeding sections. To this end, we propose breaking this concept down into the following relevant segments:
+
+    - General algorithm convergence.
+
+    - Model fit to labels.
+
+    - Parameter identifiability, uncertainty, stability and globality.
+
+    - Model adequacy.
+
+The model adequacy should, however, be a logical deduction from the preceding points and thus form the basis for advice.
+
+Below, we present the main methodology of Calibra in the following way: We first provide some basic intuition on why the aspect under discussion is relevant, followed by a brief (visual) example and specific implementation in the architecture of Calibra. However, before we focus on the methodology the implementation of various optimisers is outlined.
+
+#### Inclusion of Optimisation Algorithms in Calibra
+
+
+#### Algorithm Convergence
+
+
+#### Model Fit
+
+
+#### Identifiability, uncertainty, stability and globality.
+
+
+#### Adequacy
+
+
 
 It remains to answer which insights are needed, and arguably necessary, to judge on the overall adequacy and reliability of model results, given the components introduced in the preceeding sections. To this end, we propose breaking this concept down into the following relevant segments:
 
@@ -260,3 +307,9 @@ Python, on the other hand, is mainly used for "lighter" calculations and visuali
 [2] S. G. Johnson, The NLopt Nonlinear-Optimization Package, software.
 
 [3] P. Virtanen et al., “SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python,” Nature Methods, vol. 17, pp. 261–272, 2020, doi: 10.1038/s41592-019-0686-2.
+
+[4] J. Nocedal and S. J. Wright, Numerical Optimization, 2nd ed. New York, NY, USA: Springer, 2006, doi: 10.1007/978-0-387-40065-5.
+
+[5] N. N. Lam, P. D. Docherty, and R. Murray, “Practical identifiability of parametrised models: A review of benefits and limitations of various approaches,” Mathematics and Computers in Simulation, vol. 199, pp. 202–216, Sep. 2022, doi: 10.1016/j.matcom.2022.03.020.
+
+[6] T. G. Trucano, L. P. Swiler, T. Igusa, W. L. Oberkampf, and M. Pilch, “Calibration, validation, and sensitivity analysis: What’s what,” Reliability Engineering & System Safety, vol. 91, nos. 10–11, pp. 1331–1357, Oct.–Nov. 2006, doi: 10.1016/j.ress.2005.11.031.
