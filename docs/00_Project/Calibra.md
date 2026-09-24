@@ -224,7 +224,7 @@ Here, the underlying model generates the predictions, which are then passed to t
 
 $$
 \underset{\theta \in \Theta}{\mathrm{arg\,min}}
-\;\mathcal{L}\left(f(\mathbf{X},\theta),\mathbf{y}\right).
+\mathcal{L}\left(f(\mathbf{X},\theta),\mathbf{y}\right).
 $$
 
 This problem is tackled by various, well-documented optimisers already existing and is therefore, again, not the main contribution of Calibra. We treat Calibra essentially as an inference problem regarding both the calibrated parameter vector and overall suitability of the model.
