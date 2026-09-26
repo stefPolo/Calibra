@@ -22,14 +22,14 @@ std::vector<double> LinearModel::evaluate(
     const std::vector<double>& params
 ) const
 {
-    if ( X.empty() )
+    if (X.empty())
     {
         throw std::invalid_argument(
             "Input data must not be empty."
         );
     }
     
-    for ( std::size_t i = 0; i < X.size(); ++i )
+    for (std::size_t i = 0; i < X.size(); ++i)
     {
         if (X[i].size() != input_dimension_)
         {

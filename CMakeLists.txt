@@ -24,7 +24,7 @@ target_compile_features(
 target_include_directories(
     calibra
     PUBLIC
-        ${PROJECT_SOURCE_DIR}/cpp/include
+        ${PROJECT_SOURCE_DIR}/cpp/include/calibra
 )
 
 # ---------------------------------------------------------------------------

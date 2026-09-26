@@ -1,9 +1,9 @@
-#include "calibra/MeanSquaredError.hpp"
+#include "calibra/RootMeanSquareError.hpp"
 #include <vector>
 #include <stdexcept>
 #include <cmath>
 
-double MeanSquaredError::evaluate(
+double RootMeanSquaredError::evaluate(
     const std::vector<double>& predictions,
     const std::vector<double>& labels
 ) const
@@ -41,5 +41,5 @@ double MeanSquaredError::evaluate(
     }
 
     // Return the MSE
-    return se / static_cast<double>(n);
+    return sqrt(se / static_cast<double>(n));
 };

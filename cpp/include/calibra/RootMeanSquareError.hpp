@@ -1,14 +1,12 @@
 #pragma once
-#include "IObjectiveFunction.hpp"
+#include "Calibra/MeanSquareError.hpp"
 #include <vector>
 
-class MeanSquaredError : public IObjectiveFunction 
+class RootMeanSquaredError : public MeanSquaredError
 {
     public:
         double evaluate(
-
             const std::vector<double>& predictions,
             const std::vector<double>& labels
-
         ) const override;
 };
