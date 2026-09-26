@@ -316,9 +316,23 @@ $$
 
 for all $x_{ij}$, which parameter vector do we declare representative with respect to the system we are dealing with and why? So, the operational success of an optimisation algorithm does not guarantee a _unique_ parameter vector and certainly does not imply respective optimisation _quality_ associated with certain model performance. As a result, the processes of calibrating and validating a specific model are fundamentaly different [6].
 
-## 3. Assessing Calibration Quality
+Meanwhile, the specific utility of Calibra is also becoming clear; it will be used in particular as part of the model validation methodology, based on some specific calibration results obtained. However, before we focus on the methodology the implementation of various optimisers is outlined.
 
-Meanwhile, the specific utility of Calibra is also becoming clear; it will be used in particular as part of the model validation methodology, based on some specific calibration results obtained. It remains to answer which insights are needed, and arguably necessary, to judge on the overall adequacy and reliability of model results, given the components introduced in the preceeding sections. To this end, we propose breaking this concept down into the following relevant segments:
+## 3. Optimisation in Calibra
+
+Calibra does not feature "its own" calibration algorithm, rather it stands on the shoulders of giants and thus implements a wide variety of use-case specific algorithms available in the literature.
+
+### 3.1 Integration of Optimisation Algorithms
+
+
+
+### 3.2 Optimiser Interface
+
+### 3.3 Supported Optimisers
+
+## 4. Assessing Calibration Quality
+
+It remains to answer which insights are needed, and arguably necessary, to judge on the overall adequacy and reliability of model results, given the components introduced in the preceeding sections. To this end, we propose breaking this concept down into the following relevant segments:
 
 - General algorithm convergence.
 
@@ -330,33 +344,21 @@ Meanwhile, the specific utility of Calibra is also becoming clear; it will be us
 
 The model adequacy should, however, be a logical deduction from the preceding points and thus form the basis for advice.
 
-Below, we present the main methodology of Calibra in the following way: We first provide some basic intuition on why the aspect under discussion is relevant, followed by a brief (visual) example and specific implementation in the architecture of Calibra. However, before we focus on the methodology the implementation of various optimisers is outlined.
+Below, we present the main methodology of Calibra in the following way: We first provide some basic intuition on why the aspect under discussion is relevant, followed by a brief (visual) example and specific implementation in the architecture of Calibra.
 
-### 3.1 Algorithm Convergence
+### 4.1 Algorithm Convergence
 
-### 3.2 Model Fit
+### 4.2 Model Fit
 
-### 3.3 Identifiability
+### 4.3 Identifiability
 
-### 3.4 Uncertainty
+### 4.4 Uncertainty
 
-### 3.5 Stability
+### 4.5 Stability
 
-### 3.6 Globality
+### 4.6 Globality
 
-### 3.7 Model Adequacy
-
-It remains to answer which insights are needed, and arguably necessary, to judge on the overall adequacy and reliability of model results, given the components introduced in the preceeding sections. To this end, we propose breaking this concept down into the following relevant segments:
-
-## 4. Optimisation in Calibra
-
-### 4.1 Inclusion of Optimisation Algorithms
-
-Nevertheless, the inclusion and employment of specific optimisers in the context of Calibra is described in the following sections.
-
-### 4.2 Optimiser Interface / Architecture
-
-### 4.3 Supported Optimisers
+### 4.7 Model Adequacy
 
 ## 5. Architecture of Calibra
 
